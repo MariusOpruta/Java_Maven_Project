@@ -64,7 +64,7 @@ public class DataLoader {
     private Student creareStudent(String[] dateDespreStudent){
         int id = Integer.parseInt(dateDespreStudent[0]);
         String nume = dateDespreStudent[1];
-        Double budget = Double.valueOf(dateDespreStudent[2]);
+        double budget = Double.parseDouble(dateDespreStudent[2]);
 
         Student student = new Student(id, nume, budget);
 
