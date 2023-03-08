@@ -44,12 +44,13 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "idCurs=" + idCurs +
-                ", nameCurs='" + nameCurs + '\'' +
-                ", pretCurs=" + pretCurs +
-                ", dataInceput=" + dataInceput +
-                '}';
+        return idCurs +","+ nameCurs +","+ pretCurs +","+ dataInceput;
+//                "Course{" +
+//                "idCurs=" + idCurs +
+//                ", nameCurs='" + nameCurs + '\'' +
+//                ", pretCurs=" + pretCurs +
+//                ", dataInceput=" + dataInceput +
+//                '}';
     }
 
     @Override

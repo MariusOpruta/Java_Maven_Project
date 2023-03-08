@@ -11,4 +11,41 @@ public class Student {
         this.bugetStudent=bugetStudent;
 
     }
+    public void setBugetStudent(double bugetStudent) throws BugetInvalidException {
+        if (bugetStudent <0){
+            throw new BugetInvalidException("Studentul nu are suficienti bani");
+        }
+        this.bugetStudent= bugetStudent;
+    }
+
+    @Override
+    public String toString() {
+        return idStudent +","+ numeStudent +","+ bugetStudent;
+
+//                "Student{" +
+//                "idStudent=" + idStudent +
+//                ", numeStudent='" + numeStudent + '\'' +
+//                ", bugetStudent=" + bugetStudent +
+//                '}';
+    }
+
+    public String getNumeStudent() {
+        return numeStudent;
+    }
+
+    public void setNumeStudent(String numeStudent) {
+        this.numeStudent = numeStudent;
+    }
+
+    public double getBugetStudent() {
+        return bugetStudent;
+    }
+
+    public int getIdStudent() {
+        return idStudent;
+    }
+
+    public void setIdStudent(int idStudent) {
+        this.idStudent = idStudent;
+    }
 }

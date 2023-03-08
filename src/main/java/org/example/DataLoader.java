@@ -29,6 +29,8 @@ public class DataLoader {
         loadCourses();
         loadStudents();
         mapStudentsToCourses();
+
+        System.out.println(dataMap);
     }
 
     private void loadCourses() throws IOException {
@@ -73,13 +75,55 @@ public class DataLoader {
 
 
     }
-    private void mapStudentsToCourses() {
+    private void mapStudentsToCourses() throws IOException {
+        List<String> listaMapping = DataLoaderUtils.readFile(DataLoaderUtils.MAPPING_FILE_PATH);
+        for(String mapare: listaMapping){
+            String[] iduri = mapare.split(",");
+            int idStundent = Integer.parseInt(iduri[0]);
+            int idCurs = Integer.parseInt(iduri[1]);
+
+            Student studentGasit = null;
+            Course cursGasit = null;
+            for(Student student: students){
+                if (student.getIdStudent()==idStundent){
+                    studentGasit = student;
+                    break;
+                }
+            }
+
+            for (Course curs: dataMap.keySet()){
+                if (curs.getIdCurs() ==idCurs){
+                    cursGasit = curs;
+                    break;
+                }
+            }
+
+            if(studentGasit !=null && cursGasit !=null){
+                double bugetStudent = studentGasit.getIdStudent();
+                double pretCurs = cursGasit.getPretCurs();
+
+                double bugetRamas = bugetStudent-pretCurs;
+
+                try {
+                    studentGasit.setBugetStudent(bugetRamas);
+                    dataMap.get(cursGasit).add(studentGasit);
+                }catch (BugetInvalidException e){
+                    System.out.println("Studentul nu poate fi adaugat");
+
+
+                }
+
+
+            }
+        }
 
     }
 
     public Map<Course, List<Student>> getDataMap() {
         return dataMap;
     }
-
+    public static void afiseazaCursuri(Map<Course,List<Student>> dataMap){
+        System.out.println(dataMap.keySet());
+    }
 }
 
